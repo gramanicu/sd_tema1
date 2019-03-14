@@ -36,6 +36,13 @@ class Athlete {
         return os;
     }
 
+    bool operator<(const Athlete& other) { return points < other.points; }
+    bool operator>(const Athlete& other) { return points > other.points; }
+    bool operator<=(const Athlete& other) { return points <= other.points; }
+    bool operator>=(const Athlete& other) { return points >= other.points; }
+    bool operator==(const Athlete& other) { return points == other.points; }
+    bool operator!=(const Athlete& other) { return points != other.points; }
+
     // Other methods
     void updatePosition(int);        // Updates the athlete position
     void addPoints(int);             // Adds points

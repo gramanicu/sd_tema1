@@ -15,8 +15,8 @@ void Athlete::updatePosition(int _pos) {
 void Athlete::addPoints(int _points) { points += _points; }
 
 int Athlete::positionDifference() const {
-    if(lastPosition) { 
-        return lastPosition - currPosition; 
+    if (lastPosition) {
+        return lastPosition - currPosition;
     } else {
         return currPosition - lastPosition;
     }
