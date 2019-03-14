@@ -1,5 +1,5 @@
-#include <iostream>
-
+#include <fstream>
+#include <string>
 #include "./Athlete.h"
 
 void testAthlete() {
@@ -36,6 +36,28 @@ void testAthlete() {
 }
 
 int main() {
-    testAthlete();
+    std::ifstream input("races.in");
+    int nrAthl, nrRaces, nrPrints;
+
+    input >> nrAthl >> nrRaces >> nrPrints;
+    std::cout << nrAthl << " " << nrRaces << " " << nrPrints << std::endl;
+
+    std::string lastRead;
+    while( input >> lastRead) {
+        if(lastRead == "print") {
+
+        } else {
+            int timpi[5];
+            timpi[0] = std::stoi(lastRead);
+            for(int i=1; i<5; i++) {
+                input >> lastRead;
+                timpi[i] = std::stoi(lastRead);
+            }
+           std::cout << timpi[0] << " " << timpi[1] << " " << timpi[2] << " " << timpi[3] << " " << timpi[4] << "\n";
+        }
+    }
+
+    //testAthlete();
+    input.close();
     return 0;
 }
