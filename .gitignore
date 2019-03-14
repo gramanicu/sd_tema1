@@ -1,7 +1,11 @@
+checkstyle.txt
+races.in
 check.sh
 input*
 ref*
 cpplint.py
 README
 312CA_GramaNicolae_Tema1.zip
-snowfight
+tema1
+check.sh
+tema1

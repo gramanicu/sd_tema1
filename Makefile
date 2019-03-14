@@ -1,10 +1,13 @@
 # Copyright 2019 Grama Nicolae
 
+.PHONY: gitignore check purge clean memory update beauty pack run
+.SILENT: purge update beauty pack clean memory
+
 # Informatii program
 CC = g++
 CFLAGS = -Wall -Wextra -pedantic -O3
 #FLAGS = -lm
-EXE = snowfight
+EXE = tema1
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 
@@ -19,8 +22,11 @@ AFLAGS = -FSr
 
 # Compilarea programului
 build: $(OBJ)
-	$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS)
-	rm -f *.o
+	$(info Compiling code...)
+	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
+	$(info Compilation successfull)
+	-@rm -f *.o ||:
+	@$(MAKE) -s gitignore ||:
 
 # Ruleaza programul
 run: build
@@ -29,7 +35,7 @@ run: build
 # Arhiveaza tema
 pack: build
 	cp Readme.md README
-	zip $(AFLAGS) $(ANAME) $(ACONTENTS) 
+	zip $(AFLAGS) $(ANAME) $(ACONTENTS)
 	rm README
 
 # Sterge executabilul si fisierele obiect
@@ -38,13 +44,14 @@ clean:
 
 # Face coding-style automat, la standardul google, cu o mica modificare
 # (4 spatii in loc de 2 la alineate)
-beauty: 
+beauty:
 	clang-format -i -style=file *.cpp *.h
 
 # Descarca arhiva cu checkerul si o pregateste 
 update:
 	wget $(CHECKER)
 	unzip -o $(CARCHIVE)
+	sudo chmod 755 check.sh
 	rm -f $(CARCHIVE)*
 
 # Verifica memoria pentru leak-uri
@@ -53,8 +60,10 @@ memory:build
 	valgrind $(MFLAGS) ./$(EXE)
 
 # Foloseste checkerul pentru a verifica tema
-check:update build prepare
+check:update build
+	cp Readme.md README
 	./check.sh
+	rm README
 
 # Sterge toate fisierele care nu o sa apara in repository
 purge:
@@ -62,19 +71,20 @@ purge:
 	rm -rfd ./ref
 	rm -rfd ./input
 	rm -f cpplint.py
+	rm -f checkstyle.txt
 	rm -f README
 	rm -f $(ANAME)
 
 # Adauga toate fisierele care nu trebuie sa fie include in repository
 # la .gitignore
 gitignore:
-	echo "check.sh" > .gitignore
-	echo "input*" >> .gitignore
-	echo "ref*" >> .gitignore
-	echo "cpplint.py" >> .gitignore
-	echo "README" >> .gitignore
-	echo "$(ANAME)" >> .gitignore
-	echo "$(EXE)" >> .gitignore
-	find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore
-
-.PHONY: gitignore check purge clean memory update beauty pack run
+	@echo "checkstyle.txt" > .gitignore ||:
+	@echo "races.in" >> .gitignore ||:
+	@echo "check.sh" >> .gitignore ||:
+	@echo "input*" >> .gitignore ||:
+	@echo "ref*" >> .gitignore ||:
+	@echo "cpplint.py" >> .gitignore ||:
+	@echo "README" >> .gitignore ||:
+	@echo "$(ANAME)" >> .gitignore ||:
+	@echo "$(EXE)" >> .gitignore ||:
+	@find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore ||:
