@@ -90,5 +90,6 @@ gitignore:
 	@echo "README" >> .gitignore ||:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
+	@echo ".vscode*" >> .gitignore ||:	
 	@find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore ||:
 	echo "Updated .gitignore"
