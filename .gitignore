@@ -1,6 +1,7 @@
 check.sh
-./input
-./ref
-./cpplint.py
-./README
-./312CA_GramaNicolae_Tema1.zip
+input*
+ref*
+cpplint.py
+README
+312CA_GramaNicolae_Tema1.zip
+snowfight

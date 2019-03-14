@@ -69,11 +69,12 @@ purge:
 # la .gitignore
 gitignore:
 	echo "check.sh" > .gitignore
-	echo "./input" >> .gitignore
-	echo "./ref" >> .gitignore
-	echo "./cpplint.py" >> .gitignore
-	echo "./README" >> .gitignore
-	echo "./$(ANAME)" >> .gitignore
+	echo "input*" >> .gitignore
+	echo "ref*" >> .gitignore
+	echo "cpplint.py" >> .gitignore
+	echo "README" >> .gitignore
+	echo "$(ANAME)" >> .gitignore
+	echo "$(EXE)" >> .gitignore
 	find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore
 
 .PHONY: gitignore check purge clean memory update beauty pack run
