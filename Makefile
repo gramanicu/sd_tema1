@@ -1,7 +1,7 @@
 # Copyright 2019 Grama Nicolae
 
 .PHONY: gitignore check purge clean memory update beauty pack run
-.SILENT: purge update beauty pack clean memory
+.SILENT: purge update beauty pack clean memory gitignore
 
 # Informatii program
 CC = g++
@@ -41,6 +41,7 @@ pack: build
 # Sterge executabilul si fisierele obiect
 clean:
 	rm -f $(EXE) $(OBJ)
+	echo "Deleted the binary and object files"
 
 # Face coding-style automat, la standardul google, cu o mica modificare
 # (4 spatii in loc de 2 la alineate)
@@ -72,8 +73,10 @@ purge:
 	rm -rfd ./input
 	rm -f cpplint.py
 	rm -f checkstyle.txt
+	rm -f check.sh
 	rm -f README
 	rm -f $(ANAME)
+	echo "All files were removed"
 
 # Adauga toate fisierele care nu trebuie sa fie include in repository
 # la .gitignore
@@ -88,3 +91,4 @@ gitignore:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
 	@find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore ||:
+	echo "Updated .gitignore"
