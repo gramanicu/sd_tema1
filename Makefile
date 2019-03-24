@@ -3,7 +3,7 @@
 .PHONY: gitignore check purge clean memory update beauty pack run
 .SILENT: purge update beauty pack clean memory gitignore
 
-# Informatii program
+# Compilation variables
 CC = g++
 CFLAGS = -Wall -Wextra -pedantic -O3
 #FLAGS = -lm
@@ -11,16 +11,18 @@ EXE = tema1
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 
-# Informatii arhiva cu checkerul
-CHECKER = https://ocw.cs.pub.ro/courses/_media/sd-ca/teme/checker_tema1_2019.zip
-CARCHIVE = checker_tema1_2019.zip
+# Variables related to the checker
+# NOTE - the following line has more than 80 chars, and it's no problem
+# according to google styleguide, because it contains and URL
+CHECKER = https://ocw.cs.pub.ro/courses/_media/sd-ca/teme/checker_tema1_2019v2.zip
+CARCHIVE = checker_tema1_2019v2.zip
 
-# Informatii arhiva cu tema
+# Variables realted to the archive (with the homework)
 ANAME = 312CA_GramaNicolae_Tema1.zip
-ACONTENTS = README Makefile *.cpp *.h
+ACONTENTS = README Makefile *.cpp *.hpp
 AFLAGS = -FSr 
 
-# Compilarea programului
+# Compiles the program
 build: $(OBJ)
 	$(info Compiling code...)
 	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
@@ -28,45 +30,47 @@ build: $(OBJ)
 	-@rm -f *.o ||:
 	@$(MAKE) -s gitignore ||:
 
-# Ruleaza programul
+# Executes the binary
 run: build
 		./$(EXE)
 
-# Arhiveaza tema
+# Archives the homework
 pack: build
 	cp Readme.md README
 	zip $(AFLAGS) $(ANAME) $(ACONTENTS)
 	rm README
 
-# Sterge executabilul si fisierele obiect
+# Deletes the binary and object files
 clean:
 	rm -f $(EXE) $(OBJ)
 	echo "Deleted the binary and object files"
 
-# Face coding-style automat, la standardul google, cu o mica modificare
-# (4 spatii in loc de 2 la alineate)
+# Automatic coding style, using google standard.
+# The only modification is that I use 4 spaces instead of 2 for indentation
 beauty:
-	clang-format -i -style=file *.cpp *.h
+	clang-format -i -style=file *.cpp *.hpp
 
-# Descarca arhiva cu checkerul si o pregateste 
+# Downloads the checker archive and "installs" it
+# It will ask for the password, because it needs to give execution
+# right to the checker.
 update:
 	wget $(CHECKER)
 	unzip -o $(CARCHIVE)
 	sudo chmod 755 check.sh
 	rm -f $(CARCHIVE)*
 
-# Verifica memoria pentru leak-uri
+# Checks the memory for leaks
 MFLAGS = --leak-check=full --show-leak-kinds=all 
 memory:build
 	valgrind $(MFLAGS) ./$(EXE)
 
-# Foloseste checkerul pentru a verifica tema
+# Verifies the homework using the checker
 check:update build
 	cp Readme.md README
 	./check.sh
 	rm README
 
-# Sterge toate fisierele care nu o sa apara in repository
+# Removes all files that won't appear in the git repository
 purge:
 	rm -f $(EXE) $(OBJ)
 	rm -rfd ./ref
@@ -78,8 +82,7 @@ purge:
 	rm -f $(ANAME)
 	echo "All files were removed"
 
-# Adauga toate fisierele care nu trebuie sa fie include in repository
-# la .gitignore
+# Adds the gitignore rules
 gitignore:
 	@echo "checkstyle.txt" > .gitignore ||:
 	@echo "races.in" >> .gitignore ||:

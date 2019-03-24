@@ -1,4 +1,3 @@
-#include "./Skiplist.h"
+#include "./Skiplist.hpp"
 
 #include <math.h>
-

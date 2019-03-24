@@ -1,6 +1,6 @@
 #include <fstream>
 #include <string>
-#include "./Athlete.h"
+#include "./Athlete.hpp"
 
 void testAthlete() {
     Athlete a = Athlete(3);
@@ -16,17 +16,21 @@ void testAthlete() {
 
     Athlete b = Athlete(2);
     b.addPoints(6);
-    if(a<b) {
-        std::cout << "b " << b.get_points() << " " << a.get_points() << std::endl;
+    if (a < b) {
+        std::cout << "b " << b.get_points() << " " << a.get_points()
+                  << std::endl;
     } else {
-        std::cout << "a " << a.get_points() << " " << b.get_points() << std::endl;
+        std::cout << "a " << a.get_points() << " " << b.get_points()
+                  << std::endl;
     }
 
     b.addPoints(-3);
-    if(a<b) {
-        std::cout << "b " << b.get_points() << " " << a.get_points() << std::endl;
-    } else if(a>b) {
-        std::cout << "a " << a.get_points() << " " << b.get_points() << std::endl;
+    if (a < b) {
+        std::cout << "b " << b.get_points() << " " << a.get_points()
+                  << std::endl;
+    } else if (a > b) {
+        std::cout << "a " << a.get_points() << " " << b.get_points()
+                  << std::endl;
     } else {
         std::cout << "equal\n";
     }
@@ -43,21 +47,21 @@ int main() {
     std::cout << nrAthl << " " << nrRaces << " " << nrPrints << std::endl;
 
     std::string lastRead;
-    while( input >> lastRead) {
-        if(lastRead == "print") {
-
+    while (input >> lastRead) {
+        if (lastRead == "print") {
         } else {
             int timpi[5];
             timpi[0] = std::stoi(lastRead);
-            for(int i=1; i<5; i++) {
+            for (int i = 1; i < 5; i++) {
                 input >> lastRead;
                 timpi[i] = std::stoi(lastRead);
             }
-           std::cout << timpi[0] << " " << timpi[1] << " " << timpi[2] << " " << timpi[3] << " " << timpi[4] << "\n";
+            std::cout << timpi[0] << " " << timpi[1] << " " << timpi[2] << " "
+                      << timpi[3] << " " << timpi[4] << "\n";
         }
     }
 
-    //testAthlete();
+    // testAthlete();
     input.close();
     return 0;
 }

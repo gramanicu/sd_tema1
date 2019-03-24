@@ -5,7 +5,6 @@ The problem statement can be found [here](https://ocw.cs.pub.ro/courses/sd-ca/te
 
 # SkipList
 
-
 As it was pointed out [here](http://ticki.github.io/blog/skip-lists-done-right/), linking the nodes vertically leads to some problems:
 - Wasted Space
 - Cache Misses

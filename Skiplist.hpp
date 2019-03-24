@@ -3,11 +3,12 @@
 
 template <typename T>
 class SkipList {
-    private:
-        int maxLevel;
-        bool coinFlip();
+   private:
+    int maxLevel;
+    bool coinFlip();
 
-    public:
+   public:
 };
 
-#endif 
+
+#endif

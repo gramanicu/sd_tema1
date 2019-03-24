@@ -1,4 +1,4 @@
-#include "./Athlete.h"
+#include "./Athlete.hpp"
 
 Athlete::Athlete(const Athlete &other) {
     id = other.id;
