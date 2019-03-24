@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include "./Athlete.hpp"
+#include "./Helpers.hpp"
 
 void testAthlete() {
     Athlete a = Athlete(3);
@@ -56,12 +57,14 @@ int main() {
                 input >> lastRead;
                 timpi[i] = std::stoi(lastRead);
             }
-            std::cout << timpi[0] << " " << timpi[1] << " " << timpi[2] << " "
-                      << timpi[3] << " " << timpi[4] << "\n";
         }
     }
 
-    // testAthlete();
+    for (int i = 0; i < 100; i++) {
+        std::cout << CoinFlip::flip() << " ";
+    }
+    std::cout << std::endl;
+
     input.close();
     return 0;
 }
