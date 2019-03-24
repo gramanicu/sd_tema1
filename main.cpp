@@ -1,51 +1,13 @@
 #include <fstream>
 #include <string>
 #include "./Athlete.hpp"
-#include "./Helpers.hpp"
-
-void testAthlete() {
-    Athlete a = Athlete(3);
-    std::cout << a;
-    a.updatePosition(5);
-    std::cout << a;
-    a.addPoints(-2);
-    std::cout << a;
-    a.updatePosition(2);
-    std::cout << a;
-    a.addPoints(5);
-    std::cout << a;
-
-    Athlete b = Athlete(2);
-    b.addPoints(6);
-    if (a < b) {
-        std::cout << "b " << b.get_points() << " " << a.get_points()
-                  << std::endl;
-    } else {
-        std::cout << "a " << a.get_points() << " " << b.get_points()
-                  << std::endl;
-    }
-
-    b.addPoints(-3);
-    if (a < b) {
-        std::cout << "b " << b.get_points() << " " << a.get_points()
-                  << std::endl;
-    } else if (a > b) {
-        std::cout << "a " << a.get_points() << " " << b.get_points()
-                  << std::endl;
-    } else {
-        std::cout << "equal\n";
-    }
-
-    b = a;
-    std::cout << a << b;
-}
+#include "./LinkedList.hpp"
 
 int main() {
     std::ifstream input("races.in");
     int nrAthl, nrRaces, nrPrints;
 
     input >> nrAthl >> nrRaces >> nrPrints;
-    std::cout << nrAthl << " " << nrRaces << " " << nrPrints << std::endl;
 
     std::string lastRead;
     while (input >> lastRead) {
@@ -59,11 +21,7 @@ int main() {
             }
         }
     }
-
-    for (int i = 0; i < 100; i++) {
-        std::cout << CoinFlip::flip() << " ";
-    }
-    std::cout << std::endl;
+    
 
     input.close();
     return 0;

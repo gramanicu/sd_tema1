@@ -30,12 +30,14 @@ class SkipList {
         };
         ~SkipNode() { delete shortcut; };
     };
-
     int maxLevel;
     SkipNode* first;
     SkipNode* last;
 
    public:
+
+    SkipNode& Search(const T& value);
+    SkipNode& Insert(const T& value);
 };
 
 #endif

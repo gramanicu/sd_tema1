@@ -27,7 +27,7 @@ build: $(OBJ)
 	$(info Compiling code...)
 	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
 	$(info Compilation successfull)
-	#-@rm -f *.o ||:
+	-@rm -f *.o ||:
 	@$(MAKE) -s gitignore ||:
 
 # Executes the binary
