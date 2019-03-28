@@ -50,11 +50,17 @@ class SkipList {
    public:
     // The head of the skiplist
     SkipNode* first;
-    // The default maxSize is 40 because this way it can store and search
-    // efficiently about 1000000000000 nodes
-    SkipList(const int& maxSize = 40)
+
+    /*
+    Initialize the skiplist. A head "template" can be set. This should be
+    a value that will not appear in the skiplist . Also, the maximum size
+    of the skiplist can be set.
+    The default maxSize is 40 because this way it can store and search
+    efficiently about 1000000000000 nodes
+    */
+    SkipList(const T &head = 0,const int& maxSize = 40)
         : maxLevel(ceil(log2(maxSize))), numElements(0) {
-        first = new SkipNode(maxLevel);
+        first = new SkipNode(head, maxLevel);
         first->next = nullptr;
         for (int i = 0; i < maxLevel; i++) {
             first->shortcut[i] = nullptr;
@@ -164,7 +170,6 @@ class SkipList {
         int count = 0;
         if (list.getCount() != 0) {
             curr = curr->next;
-
             while (count < list.getCount()) {
                 output << curr->value << " ";
                 curr = curr->next;

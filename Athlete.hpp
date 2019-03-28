@@ -31,17 +31,17 @@ class Athlete {
 
     // Operator overloads
     friend std::ostream& operator<<(std::ostream& os, const Athlete& ath) {
-        os << ath.id << " " << ath.points << " " << ath.positionDifference()
-           << std::endl;
+        os << ath.id << " " << ath.points << " " << ath.positionDifference();
         return os;
     }
 
-    bool operator<(const Athlete& other) { return points < other.points; }
-    bool operator>(const Athlete& other) { return points > other.points; }
-    bool operator<=(const Athlete& other) { return points <= other.points; }
-    bool operator>=(const Athlete& other) { return points >= other.points; }
-    bool operator==(const Athlete& other) { return points == other.points; }
-    bool operator!=(const Athlete& other) { return points != other.points; }
+    // This operators compare the id because it is needed by the SkipList
+    bool operator<(const Athlete& other) { return id < other.id; }
+    bool operator>(const Athlete& other) { return id > other.id; }
+    bool operator<=(const Athlete& other) { return id <= other.id; }
+    bool operator>=(const Athlete& other) { return id >= other.id; }
+    bool operator==(const Athlete& other) { return id == other.id; }
+    bool operator!=(const Athlete& other) { return id != other.id; }
 
     // Other methods
     void updatePosition(int);        // Updates the athlete position
