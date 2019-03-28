@@ -32,7 +32,7 @@ build: $(OBJ)
 
 # Executes the binary
 run: build
-		./$(EXE)
+	./$(EXE)
 
 # Archives the homework
 pack: build
@@ -60,7 +60,7 @@ update:
 	rm -f $(CARCHIVE)*
 
 # Checks the memory for leaks
-MFLAGS = --leak-check=full --show-leak-kinds=all 
+MFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
 memory:build
 	valgrind $(MFLAGS) ./$(EXE)
 

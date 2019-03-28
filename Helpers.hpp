@@ -14,7 +14,9 @@ class CoinFlip {
         std::random_device rDevice;
         generator = std::mt19937(rDevice());
         initialized = true;
-    }
+    };
+
+    CoinFlip() = delete;
 
    public:
     static int flip() {
@@ -27,7 +29,7 @@ class CoinFlip {
         } else {
             return false;
         }
-    }
+    };
 };
 
 #endif

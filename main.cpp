@@ -1,7 +1,7 @@
 #include <fstream>
 #include <string>
 #include "./Athlete.hpp"
-#include "./LinkedList.hpp"
+#include "./SkipList.hpp"
 
 int main() {
     std::ifstream input("races.in");
@@ -21,8 +21,16 @@ int main() {
             }
         }
     }
-    
 
     input.close();
+
+    SkipList<int> list(10000);
+
+    for(int i=0; i<10000; i++) {
+        list.Insert(i);
+    }
+
+    std::cout << list << std::endl;
+
     return 0;
 }
