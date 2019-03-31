@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #ifndef RANDOM_HPP
 #define RANDOM_HPP
 

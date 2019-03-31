@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #ifndef SKIPLIST_HPP
 #define SKIPLIST_HPP
 
@@ -58,7 +59,7 @@ class SkipList {
     The default maxSize is 40 because this way it can store and search
     efficiently about 1000000000000 nodes
     */
-    SkipList(const T &head = 0,const int& maxSize = 40)
+    SkipList(const T& head = 0, const int& maxSize = 40)
         : maxLevel(ceil(log2(maxSize))), numElements(0) {
         first = new SkipNode(head, maxLevel);
         first->next = nullptr;

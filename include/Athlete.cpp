@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #include "./Athlete.hpp"
 
 Athlete::Athlete(const Athlete &other) {
@@ -15,9 +16,9 @@ void Athlete::updatePosition(int _pos) {
 void Athlete::addPoints(int _points) { points += _points; }
 
 int Athlete::positionDifference() const {
-    if (lastPosition) {
+    if (lastPosition!=0) {
         return lastPosition - currPosition;
     } else {
-        return currPosition - lastPosition;
+        return currPosition;
     }
 }

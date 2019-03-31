@@ -48,7 +48,7 @@ clean:
 # Automatic coding style, using google standard.
 # The only modification is that I use 4 spaces instead of 2 for indentation
 beauty:
-	clang-format -i -style=file *.cpp *.hpp
+	clang-format -i -style=file *.cpp */*.cpp */*.hpp
 
 # Downloads the checker archive and "installs" it
 # It will ask for the password, because it needs to give execution
@@ -57,6 +57,8 @@ update:
 	wget $(CHECKER)
 	unzip -o $(CARCHIVE)
 	sudo chmod 755 check.sh
+	sudo chmod 755 cpplint.py
+	dos2unix cpplint.py
 	rm -f $(CARCHIVE)*
 
 # Checks the memory for leaks
@@ -80,6 +82,7 @@ purge:
 	rm -f check.sh
 	rm -f README
 	rm -f $(ANAME)
+	rm -f time.err
 	echo "All files were removed"
 
 # Adds the gitignore rules
@@ -94,5 +97,7 @@ gitignore:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
+	@echo "time.err*" >> .gitignore ||:
+	@echo "races.out*" >> .gitignore ||:
 	@find . -executable -type f -not -path "*/.git/*" | cut -c 3- >>.gitignore ||:
 	echo "Updated .gitignore"

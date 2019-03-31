@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #ifndef Athlete_H
 #define Athlete_H
 
@@ -24,24 +25,59 @@ class Athlete {
     Athlete(const Athlete&);
 
     // Getters
-    int get_id()  const { return id; };
+    int get_id() const { return id; };
     int get_lastPosition() const { return lastPosition; };
     int get_currPosition() const { return currPosition; };
     int get_points() const { return points; };
 
     // Operator overloads
     friend std::ostream& operator<<(std::ostream& os, const Athlete& ath) {
-        os << ath.id << " " << ath.points << " " << ath.positionDifference();
+        os << ath.id << " " << ath.points << " " << ath.currPosition;
         return os;
     }
 
     // This operators compare the id because it is needed by the SkipList
-    bool operator<(const Athlete& other) { return id < other.id; }
-    bool operator>(const Athlete& other) { return id > other.id; }
-    bool operator<=(const Athlete& other) { return id <= other.id; }
-    bool operator>=(const Athlete& other) { return id >= other.id; }
-    bool operator==(const Athlete& other) { return id == other.id; }
-    bool operator!=(const Athlete& other) { return id != other.id; }
+    bool operator<(const Athlete& other) {
+        if (id < other.id) {
+            return true;
+        }
+        return false;
+    }
+
+    bool operator>(const Athlete& other) {
+        if (id > other.id) {
+            return true;
+        }
+        return false;
+    }
+
+    bool operator<=(const Athlete& other) {
+        if (id <= other.id) {
+            return true;
+        }
+        return false;
+    }
+
+    bool operator>=(const Athlete& other) {
+        if (id >= other.id) {
+            return true;
+        }
+        return false;
+    }
+
+    bool operator==(const Athlete& other) {
+        if (id == other.id) {
+            return true;
+        }
+        return false;
+    }
+
+    bool operator!=(const Athlete& other) {
+        if (id != other.id) {
+            return true;
+        }
+        return false;
+    }
 
     // Other methods
     void updatePosition(int);        // Updates the athlete position

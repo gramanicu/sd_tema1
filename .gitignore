@@ -8,4 +8,8 @@ README
 312CA_GramaNicolae_Tema1.zip
 tema1
 .vscode*
+time.err*
+races.out*
+check.sh
 tema1
+cpplint.py

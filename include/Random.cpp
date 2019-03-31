@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #include "./Random.hpp"
 
 bool CoinFlip::initialized = false;

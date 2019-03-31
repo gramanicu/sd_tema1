@@ -1,3 +1,4 @@
+// Copyright Grama Nicolae 2019
 #ifndef TIME_HPP
 #define TIME_HPP
 
@@ -12,9 +13,27 @@ class Times {
     ~Times(){};
     Times(const Times &other) : index(other.index), time(other.time){};
 
-    bool operator<(const Times &other) { return time < other.time; }
-    bool operator>(const Times &other) { return time > other.time; }
-    bool operator==(const Times &other) { return time == other.time; }
+    bool operator<(const Times &other) {
+        if (time < other.time) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    bool operator>(const Times &other) {
+        if (time > other.time) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    bool operator==(const Times &other) {
+        if (time == other.time) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     friend std::ostream &operator<<(std::ostream &output, const Times &result) {
         output << "index: " << result.index << " time: " << result.time;
