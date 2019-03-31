@@ -8,7 +8,7 @@ CC = g++
 CFLAGS = -Wall -Wextra -pedantic -O3
 #FLAGS = -lm
 EXE = tema1
-SRC = $(wildcard *.cpp)
+SRC = $(wildcard *.cpp) $(wildcard */*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 # Variables related to the checker

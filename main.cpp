@@ -1,7 +1,7 @@
 #include <fstream>
 #include <string>
-#include "./Athlete.hpp"
-#include "./SkipList.hpp"
+#include "./include/Athlete.hpp"
+#include "./include/SkipList.hpp"
 
 typedef struct Times {
     int index;
@@ -20,6 +20,7 @@ typedef struct Times {
         return output;
     }
 } Times;
+
 
 void computePoints(Times results[], SkipList<Athlete> &list) {
     bool ordered = false;
@@ -100,6 +101,5 @@ void race() {
 
 int main() {
     race();
-
     return 0;
 }

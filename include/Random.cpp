@@ -1,4 +1,4 @@
-#include "./Helpers.hpp"
+#include "./Random.hpp"
 
 bool CoinFlip::initialized = false;
 std::mt19937 CoinFlip::generator;

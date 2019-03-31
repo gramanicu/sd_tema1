@@ -1,5 +1,5 @@
-#ifndef HELPERS_HPP
-#define HELPERS_HPP
+#ifndef RANDOM_HPP
+#define RANDOM_HPP
 
 #include <random>
 

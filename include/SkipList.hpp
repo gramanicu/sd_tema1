@@ -1,7 +1,7 @@
 #ifndef SKIPLIST_HPP
 #define SKIPLIST_HPP
 
-#include "./Helpers.hpp"
+#include "./Random.hpp"
 
 #include <math.h>
 #include <iostream>
