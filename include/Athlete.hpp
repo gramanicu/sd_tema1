@@ -24,10 +24,10 @@ class Athlete {
     Athlete(const Athlete&);
 
     // Getters
-    int get_id() { return id; };
-    int get_lastPosition() { return lastPosition; };
-    int get_currPosition() { return currPosition; };
-    int get_points() { return points; };
+    int get_id()  const { return id; };
+    int get_lastPosition() const { return lastPosition; };
+    int get_currPosition() const { return currPosition; };
+    int get_points() const { return points; };
 
     // Operator overloads
     friend std::ostream& operator<<(std::ostream& os, const Athlete& ath) {
