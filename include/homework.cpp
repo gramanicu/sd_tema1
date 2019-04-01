@@ -44,12 +44,30 @@ void race() {
     output.close();
 }
 
+void checkOrder(Times *results, int size) {
+    bool change = false;
+    do {
+        change = false;
+        for (int i = 0; i < size - 1; ++i) {
+            if (results[i].time == results[i + 1].time) {
+                if (results[i].index > results[i + 1].index) {
+                    Times aux = results[i];
+                    results[i] = results[i + 1];
+                    results[i + 1] = aux;
+                    change = true;
+                }
+            }
+        }
+    } while (change);
+}
+
 void computePoints(Times results[], SkipList<Athlete> &list) {
     int attending = 0;
     int nrAthl = list.getCount();
 
     // Order the times in a ascending order
     Quicksort(results, compareTimes, nrAthl);
+    checkOrder(results, nrAthl);
 
     // Where times are equal, change postions depending on the last ranking
     bool changed = true;
@@ -79,7 +97,6 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
             attending++;
         }
     }
-
 
     // Compute the number of points to be given to each athlete
     int points[1000];
