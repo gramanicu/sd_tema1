@@ -19,7 +19,7 @@ CARCHIVE = checker_tema1_2019v2.zip
 
 # Variables realted to the archive (with the homework)
 ANAME = 312CA_GramaNicolae_Tema1.zip
-ACONTENTS = README Makefile *.cpp *.hpp
+ACONTENTS = README Makefile main.cpp include/
 AFLAGS = -FSr 
 
 # Compiles the program
@@ -35,8 +35,8 @@ run: build
 	./$(EXE)
 
 # Archives the homework
-pack: build
-	cp Readme.md README
+pack:
+	if [ ! -f README ]; then cp Readme.md README; fi
 	zip $(AFLAGS) $(ANAME) $(ACONTENTS)
 	rm README
 
@@ -68,7 +68,7 @@ memory:build
 
 # Verifies the homework using the checker
 check:update build
-	cp Readme.md README
+	if [ ! -f README ]; then cp Readme.md README; fi
 	./check.sh
 	rm README
 
