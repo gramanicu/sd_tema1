@@ -20,7 +20,7 @@ void race();
 void updateRanking(SkipList<Athlete> &list, Athlete *ranking);
 
 // Prints the ranking
-void printRanking(SkipList<Athlete> &list, std::ofstream &output);
+void printRanking(SkipList<Athlete> &list, std::ofstream &output, bool first);
 
 // Function used by the quicksort algorithm, to compare the times
 bool compareTimes(const Times &first, const Times &second);

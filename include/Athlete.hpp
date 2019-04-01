@@ -80,9 +80,10 @@ class Athlete {
     }
 
     // Other methods
-    void updatePosition(int);        // Updates the athlete position
-    void addPoints(int);             // Adds points
-    int positionDifference() const;  // Computes the "progress"
+    void updatePosition(int);  // Updates the athlete position
+    void addPoints(int);       // Adds points
+    int positionDifference();  // Computes the "progress"
+    void updatePrint();        // Updates the rank on last print
 };
 
 #endif

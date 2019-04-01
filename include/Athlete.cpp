@@ -8,17 +8,10 @@ Athlete::Athlete(const Athlete &other) {
     points = other.points;
 }
 
-void Athlete::updatePosition(int _pos) {
-    lastPosition = currPosition;
-    currPosition = _pos;
-}
+void Athlete::updatePrint() { lastPosition = currPosition; }
+
+void Athlete::updatePosition(int _pos) { currPosition = _pos; }
 
 void Athlete::addPoints(int _points) { points += _points; }
 
-int Athlete::positionDifference() const {
-    if (lastPosition!=0) {
-        return lastPosition - currPosition;
-    } else {
-        return currPosition;
-    }
-}
+int Athlete::positionDifference() { return lastPosition - currPosition; }
