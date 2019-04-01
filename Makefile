@@ -5,7 +5,7 @@
 
 # Compilation variables
 CC = g++
-CFLAGS = -Wall -Wextra -pedantic -O3
+CFLAGS = -Wall -Wextra -pedantic -O3 -g
 #FLAGS = -lm
 EXE = tema1
 SRC = $(wildcard *.cpp) $(wildcard */*.cpp)
@@ -96,6 +96,7 @@ gitignore:
 	@echo "README" >> .gitignore ||:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
+	@echo "$(OBJ)" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	@echo "time.err*" >> .gitignore ||:
 	@echo "races.out*" >> .gitignore ||:

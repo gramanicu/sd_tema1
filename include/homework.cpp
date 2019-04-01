@@ -152,7 +152,6 @@ void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
                 }
             }
         }
-
     } while (cont);
 
     for (int i = 0; i < list.getCount(); ++i) {

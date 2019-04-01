@@ -3,6 +3,5 @@
 
 int main() {
     race();
-
     return 0;
 }

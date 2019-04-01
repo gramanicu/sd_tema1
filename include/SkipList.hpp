@@ -53,13 +53,11 @@ class SkipList {
     SkipNode* first;
 
     /*
-    Initialize the skiplist. A head "template" can be set. This should be
-    a value that will not appear in the skiplist . Also, the maximum size
-    of the skiplist can be set.
-    The default maxSize is 40 because this way it can store and search
-    efficiently about 1000000000000 nodes
+        Initialize the skiplist. A head "template" can be set. This should be
+        a value that will not appear in the skiplist . Also, the maximum size
+        of the skiplist can be set.
     */
-    SkipList(const T& head = 0, const int& maxSize = 40)
+    SkipList(const T& head = 0, const int& maxSize = 1000)
         : maxLevel(ceil(log2(maxSize))), numElements(0) {
         first = new SkipNode(head, maxLevel);
         first->next = nullptr;
@@ -137,8 +135,10 @@ class SkipList {
             }
 
             // Search & Link on all shortcut levels
-            for (int i = 0; i < levels; ++i) {
-                SkipNode* curr = first;
+            // It searches on the top level, links there, then continues
+            // the search on a lower level
+            SkipNode* curr = first;
+            for (int i = levels - 1; i >= 0; i--) {
                 while (curr->shortcut[i] != nullptr) {
                     if (curr->shortcut[i]->value < value) {
                         curr = curr->shortcut[i];
@@ -150,8 +150,6 @@ class SkipList {
                 node->shortcut[i] = curr->shortcut[i];
                 curr->shortcut[i] = node;
             }
-
-            SkipNode* curr = first;
 
             // Search on the bottom list
             while (curr->next != nullptr && curr->next->value < value) {
@@ -181,6 +179,9 @@ class SkipList {
         }
         return output;
     }
+
+    // Return the max level
+    int get_maxLevel() { return maxLevel; };
 };
 
 #endif
