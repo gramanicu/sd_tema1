@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef QUICKSORT_H
-#define QUICKSORT_H
+#ifndef INCLUDE_QUICKSORT_H_
+#define INCLUDE_QUICKSORT_H_
 
 #include <iostream>
 
@@ -41,6 +41,6 @@ void Quicksort(T *array, bool (*compare)(const T &first, const T &second),
     if (pivot + 1 < end) {
         Quicksort(array, compare, size, pivot + 1, end);
     }
-};
+}
 
-#endif
+#endif  // INCLUDE_QUICKSORT_H_

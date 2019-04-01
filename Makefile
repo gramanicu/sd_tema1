@@ -48,7 +48,7 @@ clean:
 # Automatic coding style, using google standard.
 # The only modification is that I use 4 spaces instead of 2 for indentation
 beauty:
-	clang-format -i -style=file *.cpp */*.cpp */*.hpp
+	clang-format -i -style=file *.cpp */*.cpp */*.h
 
 # Downloads the checker archive and "installs" it
 # It will ask for the password, because it needs to give execution

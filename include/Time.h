@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef TIME_H
-#define TIME_H
+#ifndef INCLUDE_TIME_H_
+#define INCLUDE_TIME_H_
 
 #include <iostream>
 
@@ -8,10 +8,10 @@ class Times {
    public:
     int index;
     int time;
-    Times(){};
-    Times(const int index, const int time) : index(index), time(time){};
-    ~Times(){};
-    Times(const Times &other) : index(other.index), time(other.time){};
+    Times(){}
+    Times(const int index, const int time) : index(index), time(time){}
+    ~Times(){}
+    Times(const Times &other) : index(other.index), time(other.time){}
 
     bool operator<(const Times &other) {
         if (time < other.time) {
@@ -41,4 +41,4 @@ class Times {
     }
 };
 
-#endif
+#endif  // INCLUDE_TIME_H_

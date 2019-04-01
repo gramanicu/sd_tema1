@@ -1,9 +1,9 @@
 // Copyright Grama Nicolae 2019
-#ifndef HOMEWORK_H
-#define HOMEWORK_H
+#ifndef INCLUDE_HOMEWORK_H_
+#define INCLUDE_HOMEWORK_H_
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include "./Athlete.h"
 #include "./Quicksort.h"
@@ -29,4 +29,4 @@ bool compareTimes(const Times &first, const Times &second);
 // has less points)
 bool comparePoints(const Athlete &first, const Athlete &second);
 
-#endif
+#endif  // INCLUDE_HOMEWORK_H_

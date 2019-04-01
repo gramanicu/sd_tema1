@@ -1,11 +1,12 @@
 // Copyright Grama Nicolae 2019
-#ifndef SKIPLIST_H
-#define SKIPLIST_H
-
-#include "./Random.h"
+#ifndef INCLUDE_SKIPLIST_H_
+#define INCLUDE_SKIPLIST_H_
 
 #include <math.h>
 #include <iostream>
+
+#include "./Random.h"
+
 template <typename T>
 class SkipList {
    private:
@@ -21,14 +22,14 @@ class SkipList {
         SkipNode* next;
 
         // Constructors
-        SkipNode(const int _levels) : value(0), levels(_levels) {
+        explicit SkipNode(const int _levels) : value(0), levels(_levels) {
             shortcut = new SkipNode*[levels];
-        };
+        }
 
         SkipNode(const T& _value, const int _levels)
             : value(_value), levels(_levels) {
             shortcut = new SkipNode*[levels];
-        };
+        }
 
         // Copy-Constructor
         SkipNode(const SkipNode& other)
@@ -37,10 +38,10 @@ class SkipList {
             for (int i = 1; i <= levels; ++i) {
                 shortcut[i] = other.shortcut[i];
             }
-        };
+        }
 
         // Destructor
-        ~SkipNode() { delete[] shortcut; };
+        ~SkipNode() { delete[] shortcut; }
     };
 
     // Maximum level in the skiplist
@@ -57,14 +58,14 @@ class SkipList {
         a value that will not appear in the skiplist . Also, the maximum size
         of the skiplist can be set.
     */
-    SkipList(const T& head = 0, const int& maxSize = 1000)
+    explicit SkipList(const T& head = 0, const int& maxSize = 1000)
         : maxLevel(ceil(log2(maxSize))), numElements(0) {
         first = new SkipNode(head, maxLevel);
         first->next = nullptr;
         for (int i = 0; i < maxLevel; i++) {
             first->shortcut[i] = nullptr;
         }
-    };
+    }
 
     ~SkipList() {
         SkipNode* curr = first;
@@ -77,7 +78,7 @@ class SkipList {
             curr = next;
             count++;
         }
-    };
+    }
 
     int getCount() const { return numElements; }
 
@@ -118,7 +119,7 @@ class SkipList {
             }
         }
         return nullptr;
-    };
+    }
 
     // Insert a value (element) in the skiplist
     void Insert(const T& value) {
@@ -160,7 +161,7 @@ class SkipList {
 
             numElements++;
         }
-    };
+    }
 
     // Print all data in the skiplist
     friend std::ostream& operator<<(std::ostream& output,
@@ -181,7 +182,7 @@ class SkipList {
     }
 
     // Return the max level
-    int get_maxLevel() { return maxLevel; };
+    int get_maxLevel() { return maxLevel; }
 };
 
-#endif
+#endif  // INCLUDE_SKIPLIST_H_
