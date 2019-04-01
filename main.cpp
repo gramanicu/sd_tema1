@@ -1,5 +1,5 @@
 // Copyright Grama Nicolae 2019
-#include "./include/homework.hpp"
+#include "./include/homework.h"
 
 int main() {
     race();

@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef RANDOM_HPP
-#define RANDOM_HPP
+#ifndef RANDOM_H
+#define RANDOM_H
 
 #include <random>
 

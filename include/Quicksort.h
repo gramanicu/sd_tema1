@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef QUICKSORT_HPP
-#define QUICKSORT_HPP
+#ifndef QUICKSORT_H
+#define QUICKSORT_H
 
 #include <iostream>
 

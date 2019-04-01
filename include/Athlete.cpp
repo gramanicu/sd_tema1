@@ -1,5 +1,5 @@
 // Copyright Grama Nicolae 2019
-#include "./Athlete.hpp"
+#include "./Athlete.h"
 
 Athlete::Athlete(const Athlete &other) {
     id = other.id;

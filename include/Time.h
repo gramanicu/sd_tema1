@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef TIME_HPP
-#define TIME_HPP
+#ifndef TIME_H
+#define TIME_H
 
 #include <iostream>
 

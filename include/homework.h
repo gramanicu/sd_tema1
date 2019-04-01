@@ -1,14 +1,14 @@
 // Copyright Grama Nicolae 2019
-#ifndef HOMEWORK_HPP
-#define HOMEWORK_HPP
+#ifndef HOMEWORK_H
+#define HOMEWORK_H
 
-#include <fstream>
 #include <iostream>
+#include <fstream>
 #include <string>
-#include "./Athlete.hpp"
-#include "./Quicksort.hpp"
-#include "./SkipList.hpp"
-#include "./Time.hpp"
+#include "./Athlete.h"
+#include "./Quicksort.h"
+#include "./SkipList.h"
+#include "./Time.h"
 
 // Computes the number of points every athlete will get after a race
 void computePoints(Times results[], SkipList<Athlete> &list);

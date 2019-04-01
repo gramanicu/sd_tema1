@@ -1,8 +1,8 @@
 // Copyright Grama Nicolae 2019
-#ifndef SKIPLIST_HPP
-#define SKIPLIST_HPP
+#ifndef SKIPLIST_H
+#define SKIPLIST_H
 
-#include "./Random.hpp"
+#include "./Random.h"
 
 #include <math.h>
 #include <iostream>
