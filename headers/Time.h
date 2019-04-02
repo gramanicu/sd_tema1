@@ -8,7 +8,7 @@ class Times {
  public:
   int index;
   int time;
-  
+
   // Constructors
   Times() {}
   Times(const int index, const int time) : index(index), time(time) {}
@@ -34,7 +34,7 @@ class Times {
       return false;
     }
   }
-  
+
   bool operator==(const Times &other) {
     if (time == other.time) {
       return true;

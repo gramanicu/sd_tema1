@@ -1,7 +1,7 @@
 // Copyright Grama Nicolae 2019
 
-// Note - wherever you find array[MAX_ATHLETES], I would have used 
-// the number of athletes as the size, but cpplint.py had some 
+// Note - wherever you find array[MAX_ATHLETES], I would have used
+// the number of athletes as the size, but cpplint.py had some
 // problems with that
 
 #include "../headers/homework.h"
@@ -17,7 +17,7 @@ void race() {
 
     // Open the input file and check if it was succesfull
     std::ifstream input("races.in");
-    if(input.fail()) {
+    if (input.fail()) {
         exit(0);
     }
 

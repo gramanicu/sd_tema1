@@ -6,24 +6,23 @@
 # Compilation variables
 CC = g++
 CFLAGS = -Wall -Wextra -pedantic -O3 -g
-EXE = bin/tema1
+EXE = tema1
 SRC = $(wildcard *.cpp) $(wildcard */*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 # Variables related to the checker
 # NOTE - the following line has more than 80 chars, and it's no problem
 # according to google styleguide, because it contains and URL
-CHECKER = https://ocw.cs.pub.ro/courses/_media/sd-ca/teme/checker_tema1_2019v2.zip
-CARCHIVE = checker_tema1_2019v2.zip
+CHECKER = https://ocw.cs.pub.ro/courses/_media/sd-ca/teme/checker-tema1-2019-v3.zip
+CARCHIVE = checker-tema1-2019-v3.zip
 
 # Variables realted to the archive (with the homework)
 ANAME = 312CA_GramaNicolae_Tema1.zip
-ACONTENTS = README Makefile main.cpp include/ headers/
+ACONTENTS = README Makefile sources/ headers/
 AFLAGS = -FSr 
 
 # Compiles the program
 build: $(OBJ)
-	-@if [ ! -d bin/ ]; then mkdir bin/; fi ||:
 	$(info Compiling code...)
 	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
 	$(info Compilation successfulsl)
@@ -48,7 +47,7 @@ clean:
 # Automatic coding style, using google standard.
 # The only modification is that I use 4 spaces instead of 2 for indentation
 beauty:
-	clang-format -i -style=file *.cpp */*.cpp
+	clang-format -i -style=file */*.cpp
 	clang-format -i -style=google */*.h
 
 # Downloads the checker archive and "installs" it
@@ -78,13 +77,13 @@ purge:
 	rm -f $(EXE) $(OBJ)
 	rm -rfd ./ref
 	rm -rfd ./input
-	rm -rfd ./bin
 	rm -f cpplint.py
 	rm -f checkstyle.txt
 	rm -f check.sh
 	rm -f README
 	rm -f *.out *.in
 	rm -f $(ANAME)
+	rm -f $(CARCHIVE)*
 	rm -f time.err
 	echo "All files were removed"
 
@@ -94,7 +93,6 @@ gitignore:
 	@echo "races.in" >> .gitignore ||:
 	@echo "check.sh" >> .gitignore ||:
 	@echo "input*" >> .gitignore ||:
-	@echo "bin*" >> .gitignore ||:
 	@echo "ref*" >> .gitignore ||:
 	@echo "cpplint.py" >> .gitignore ||:
 	@echo "README" >> .gitignore ||:

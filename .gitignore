@@ -7,9 +7,9 @@ ref*
 cpplint.py
 README
 312CA_GramaNicolae_Tema1.zip
-bin/tema1
+tema1
 sources/Athlete.o sources/Random.o sources/homework.o sources/main.o
 .vscode*
 time.err*
 races.out*
-bin/tema1
+tema1
