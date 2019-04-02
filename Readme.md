@@ -9,7 +9,39 @@ The problem statement can be found [here](https://ocw.cs.pub.ro/courses/sd-ca/te
 
 ## Project Structure
 
+``` bash
+ - ./
+    |-- .clang-format
+    |-- Makefile
+    |-- Readme.md
+    |-- headers
+    |   |-- Athlete.h
+    |   |-- Quicksort.h
+    |   |-- Random.h
+    |   |-- SkipList.h
+    |   |-- Time.h
+    |   |-- homework.h
+    |-- sources
+        |-- Athlete.cpp
+        |-- Random.cpp
+        |-- homework.cpp
+        |-- main.cpp
+```
+
+- .clang-format - custom formatting (google standard from clang, with 4 space tabs)
+- Makefile - a lot of make commands, for compilation, debugging, generating the .gitignore, etc.
+- Readme<span></span>.md - this file :)
+- headers/ - all .h files
+- sources/ - all .cpp files
+
 ## SkipList
+
+One of the things that needed to be implemented in this project was a skiplist.
+A skiplist is a data structure, similar to a B-tree, but a lot easier to implement, which is also faster for most operations. 
+
+### The wrong way to implement a skiplist
+
+![Bad Skiplist](https://i.imgur.com/nNjOtfa.png "Bad Skiplist")
 
 As it was pointed out [here](http://ticki.github.io/blog/skip-lists-done-right/), linking the nodes vertically leads to some problems:
 
