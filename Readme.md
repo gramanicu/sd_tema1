@@ -37,18 +37,24 @@ The problem statement can be found [here](https://ocw.cs.pub.ro/courses/sd-ca/te
 ## SkipList
 
 One of the things that needed to be implemented in this project was a skiplist.
-A skiplist is a data structure, similar to a B-tree, but a lot easier to implement, which is also faster for most operations. 
+A skiplist is a data structure, similar to a B-tree, but a lot easier to implement, which is also faster for most operations.
+
+Basically, skiplist are singly linked list, with "express lanes". These help to `skip` some nodes, making the search a lot faster. As the number of nodes increases, the number of levels increases, making possible even longer "jumps".
 
 ### The wrong way to implement a skiplist
 
 ![Bad Skiplist](https://i.imgur.com/nNjOtfa.png "Bad Skiplist")
 
-As it was pointed out [here](http://ticki.github.io/blog/skip-lists-done-right/), linking the nodes vertically leads to some problems:
+A lot of times, people implement the levels using copies of the original node, each node having 4 pointers (left, right, up, down).
+
+As it was pointed out [here](http://ticki.github.io/blog/skip-lists-done-right/), linking the nodes vertically (and using multiple nodes) leads to some problems:
 
 - Wasted Space
 - Cache Misses
 
-To solve this problems, the skiplist is a singly linked list, "in which each node contains an array (representing the nodes above) with pointers to later nodes". Also, because dynamically allocated arrays can still lead to cache misses, the arrays have a fixed size, determined when the node is created.
+### The right way
+
+To solve those problems, the skiplist is implemented using a singly linked list, "in which each node contains an array (representing the nodes above) with pointers to later nodes". Also, because dynamically allocated arrays can still lead to cache misses, the arrays have a fixed size, determined when the node is created.
 
 ### References
 
