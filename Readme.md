@@ -89,7 +89,7 @@ To insert a node, it is firstly search, to assure it doesn't exist already. Afte
 
 ## CoinFlip
 
-More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL). So, to solve those problems, I used utilities from `random` library. The coin flip could have been implemented just with random device, but it is not very efficient when it need to be called quickly. Random device generates random numbers in the same way as `urandom` does, so it relatively slow.
+More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL). So, to solve those problems, I used utilities from `random` library. The coin flip could have been implemented just with random device, but it is not very efficient when it need to be called quickly. Random device generates random numbers in the same way as `urandom` does, so it **relatively slow**.
 The coin flip algorithm works this way:
 
 1. Generate a TRUE random number using `random_device`
@@ -102,7 +102,7 @@ The coin flip algorithm works this way:
 
 ## Quicksort
 
-This is an efficient sorting algorithm. The last element in the sequence is chosen as a pivot, then all element on its left that are lower than it are moved to its right. Then, this algorithm is repeated for all elements on its left, respectively right side. At the end, the elements are sorted in descending order. In the next image, the algorithm is used for ascending order sorting.
+This is an **efficient sorting algorithm**. The last element in the sequence is chosen as a pivot, then all element on its left that are lower than it are moved to its right. Then, this algorithm is repeated for all elements on its left, respectively right side. At the end, the elements are sorted in descending order. In the next image, the algorithm is used to sort numbers in ascending order.
 
 ![Quicksort](https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png "Quicksort")
 
