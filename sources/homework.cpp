@@ -1,15 +1,26 @@
 // Copyright Grama Nicolae 2019
-// Note - wherever you find array[1000], I would have used the number of
-// as the size, but cpplint.py had some problems with that
+
+// Note - wherever you find array[MAX_ATHLETES], I would have used 
+// the number of athletes as the size, but cpplint.py had some 
+// problems with that
 
 #include "../headers/homework.h"
 #include <string>
 
+#define MAX_ATHLETES 1000
+
+// The logic behind the racing algorithm
 void race() {
     // There will never be an athlete with the index lower than 0
     SkipList<Athlete> list(Athlete(-1));
     int nrAthl, nrRaces, nrPrints;
+
+    // Open the input file and check if it was succesfull
     std::ifstream input("races.in");
+    if(input.fail()) {
+        exit(0);
+    }
+
     std::ofstream output("races.out");
 
     input >> nrAthl >> nrRaces >> nrPrints;
@@ -18,16 +29,16 @@ void race() {
         list.Insert(Athlete(i));
     }
 
-    // Reads the data (on the fly, it will process it)
     std::string lastRead;
     bool first = true;
+    // Reads the data and process it on the fly
     while (input >> lastRead) {
         if (lastRead == "print") {
             printRanking(list, output, first);
             first = false;
         } else {
             // Stores the results of every race
-            Times results[1000];
+            Times results[MAX_ATHLETES];
             results[0] = Times(0, std::stoi(lastRead));
             for (int i = 1; i < nrAthl; ++i) {
                 input >> lastRead;
@@ -44,6 +55,7 @@ void race() {
     output.close();
 }
 
+// Check if the times are ordered correctly
 void checkOrder(Times *results, int size) {
     bool change = false;
     do {
@@ -99,7 +111,7 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
     }
 
     // Compute the number of points to be given to each athlete
-    int points[1000];
+    int points[MAX_ATHLETES];
     for (int i = nrAthl - attending; i < nrAthl; ++i) {
         int pGiven;
         if (attending % 2 == 0) {
@@ -123,7 +135,7 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
         list.Search(Athlete(i))->value.addPoints(points[i]);
     }
 
-    Athlete ranking[1000];
+    Athlete ranking[MAX_ATHLETES];
     updateRanking(list, ranking);
 }
 
@@ -162,7 +174,7 @@ void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
 
 // Print ranking - first = true if it is the first print
 void printRanking(SkipList<Athlete> &list, std::ofstream &output, bool first) {
-    Athlete ranking[1000];
+    Athlete ranking[MAX_ATHLETES];
     updateRanking(list, ranking);
 
     // Print the data

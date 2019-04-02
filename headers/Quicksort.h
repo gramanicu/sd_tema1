@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-// Quicksort function - explained in Readme
+// Quicksort function - explained in Readme in more detail
 template <typename T>
 void Quicksort(T *array, bool (*compare)(const T &first, const T &second),
                int size, int start = 0, int end = 0) {

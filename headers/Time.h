@@ -8,9 +8,15 @@ class Times {
  public:
   int index;
   int time;
+  
+  // Constructors
   Times() {}
   Times(const int index, const int time) : index(index), time(time) {}
+
+  // Destructor
   ~Times() {}
+
+  // Copy-Constructor
   Times(const Times &other) : index(other.index), time(other.time) {}
 
   bool operator<(const Times &other) {
@@ -20,6 +26,7 @@ class Times {
       return false;
     }
   }
+
   bool operator>(const Times &other) {
     if (time > other.time) {
       return true;
@@ -27,6 +34,7 @@ class Times {
       return false;
     }
   }
+  
   bool operator==(const Times &other) {
     if (time == other.time) {
       return true;

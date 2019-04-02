@@ -6,7 +6,7 @@
 
 class CoinFlip {
  private:
-  // The next 3 are used for random generation
+  // The next 3 variables are used for random generation
   static bool initialized;
   static std::mt19937 generator;
   static std::uniform_int_distribution<int> distribution;

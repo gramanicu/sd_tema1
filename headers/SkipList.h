@@ -66,6 +66,7 @@ class SkipList {
     }
   }
 
+  // Destructor
   ~SkipList() {
     SkipNode* curr = first;
     SkipNode* next;
@@ -82,6 +83,7 @@ class SkipList {
   int getCount() const { return numElements; }
 
   // Search for a node. Return a nullptr if it doesn't exist
+  // The algorithm is explained in Readme
   SkipNode* Search(const T& value) {
     SkipNode* node = first;
     int currLevel = maxLevel - 1;
