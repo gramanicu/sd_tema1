@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_RANDOM_H_
-#define INCLUDE_RANDOM_H_
+#ifndef HEADERS_RANDOM_H_
+#define HEADERS_RANDOM_H_
 
 #include <random>
 
@@ -34,4 +34,4 @@ class CoinFlip {
   }
 };
 
-#endif  // INCLUDE_RANDOM_H_
+#endif  // HEADERS_RANDOM_H_

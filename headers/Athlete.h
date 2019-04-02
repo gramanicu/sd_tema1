@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_ATHLETE_H_
-#define INCLUDE_ATHLETE_H_
+#ifndef HEADERS_ATHLETE_H_
+#define HEADERS_ATHLETE_H_
 
 #include <iostream>
 
@@ -87,4 +87,4 @@ class Athlete {
   void updatePrint();        // Updates the rank on last print
 };
 
-#endif  // INCLUDE_ATHLETE_H_
+#endif  // HEADERS_ATHLETE_H_

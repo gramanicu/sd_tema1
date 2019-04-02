@@ -2,15 +2,14 @@ checkstyle.txt
 races.in
 check.sh
 input*
+bin*
 ref*
 cpplint.py
 README
 312CA_GramaNicolae_Tema1.zip
-tema1
-main.o include/Random.o include/Athlete.o include/homework.o
+bin/tema1
+sources/Athlete.o sources/Random.o sources/homework.o sources/main.o
 .vscode*
 time.err*
 races.out*
-check.sh
-tema1
-cpplint.py
+bin/tema1

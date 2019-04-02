@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_TIME_H_
-#define INCLUDE_TIME_H_
+#ifndef HEADERS_TIME_H_
+#define HEADERS_TIME_H_
 
 #include <iostream>
 
@@ -41,4 +41,4 @@ class Times {
   }
 };
 
-#endif  // INCLUDE_TIME_H_
+#endif  // HEADERS_TIME_H_

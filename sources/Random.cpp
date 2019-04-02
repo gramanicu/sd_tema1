@@ -1,5 +1,5 @@
 // Copyright Grama Nicolae 2019
-#include "include/Random.h"
+#include "../headers/Random.h"
 
 bool CoinFlip::initialized = false;
 std::mt19937 CoinFlip::generator;

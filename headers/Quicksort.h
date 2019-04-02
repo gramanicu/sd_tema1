@@ -1,6 +1,6 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_QUICKSORT_H_
-#define INCLUDE_QUICKSORT_H_
+#ifndef HEADERS_QUICKSORT_H_
+#define HEADERS_QUICKSORT_H_
 
 #include <iostream>
 
@@ -43,4 +43,4 @@ void Quicksort(T *array, bool (*compare)(const T &first, const T &second),
   }
 }
 
-#endif  // INCLUDE_QUICKSORT_H_
+#endif  // HEADERS_QUICKSORT_H_

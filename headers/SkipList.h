@@ -1,11 +1,11 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_SKIPLIST_H_
-#define INCLUDE_SKIPLIST_H_
+#ifndef HEADERS_SKIPLIST_H_
+#define HEADERS_SKIPLIST_H_
 
 #include <math.h>
 #include <iostream>
 
-#include "./Random.h"
+#include "Random.h"
 
 template <typename T>
 class SkipList {
@@ -183,4 +183,4 @@ class SkipList {
   int get_maxLevel() { return maxLevel; }
 };
 
-#endif  // INCLUDE_SKIPLIST_H_
+#endif  // HEADERS_SKIPLIST_H_

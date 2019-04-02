@@ -6,8 +6,7 @@
 # Compilation variables
 CC = g++
 CFLAGS = -Wall -Wextra -pedantic -O3 -g
-#FLAGS = -lm
-EXE = tema1
+EXE = bin/tema1
 SRC = $(wildcard *.cpp) $(wildcard */*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
@@ -19,14 +18,15 @@ CARCHIVE = checker_tema1_2019v2.zip
 
 # Variables realted to the archive (with the homework)
 ANAME = 312CA_GramaNicolae_Tema1.zip
-ACONTENTS = README Makefile main.cpp include/
+ACONTENTS = README Makefile main.cpp include/ headers/
 AFLAGS = -FSr 
 
 # Compiles the program
 build: $(OBJ)
+	-@if [ ! -d bin/ ]; then mkdir bin/; fi ||:
 	$(info Compiling code...)
 	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
-	$(info Compilation successfull)
+	$(info Compilation successfulsl)
 	-@rm -f *.o ||:
 	@$(MAKE) -s gitignore ||:
 
@@ -78,10 +78,12 @@ purge:
 	rm -f $(EXE) $(OBJ)
 	rm -rfd ./ref
 	rm -rfd ./input
+	rm -rfd ./bin
 	rm -f cpplint.py
 	rm -f checkstyle.txt
 	rm -f check.sh
 	rm -f README
+	rm -f *.out *.in
 	rm -f $(ANAME)
 	rm -f time.err
 	echo "All files were removed"
@@ -92,12 +94,13 @@ gitignore:
 	@echo "races.in" >> .gitignore ||:
 	@echo "check.sh" >> .gitignore ||:
 	@echo "input*" >> .gitignore ||:
+	@echo "bin*" >> .gitignore ||:
 	@echo "ref*" >> .gitignore ||:
 	@echo "cpplint.py" >> .gitignore ||:
 	@echo "README" >> .gitignore ||:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
-	@echo "$(OBJ)" >> .gitignore ||:
+	@echo sources/*.o >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	@echo "time.err*" >> .gitignore ||:
 	@echo "races.out*" >> .gitignore ||:

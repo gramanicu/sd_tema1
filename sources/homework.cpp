@@ -2,7 +2,7 @@
 // Note - wherever you find array[1000], I would have used the number of
 // as the size, but cpplint.py had some problems with that
 
-#include "include/homework.h"
+#include "../headers/homework.h"
 #include <string>
 
 void race() {

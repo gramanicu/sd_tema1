@@ -1,14 +1,14 @@
 // Copyright Grama Nicolae 2019
-#ifndef INCLUDE_HOMEWORK_H_
-#define INCLUDE_HOMEWORK_H_
+#ifndef HEADERS_HOMEWORK_H_
+#define HEADERS_HOMEWORK_H_
 
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "./Athlete.h"
-#include "./Quicksort.h"
-#include "./SkipList.h"
-#include "./Time.h"
+#include "Athlete.h"
+#include "Quicksort.h"
+#include "SkipList.h"
+#include "Time.h"
 
 // Computes the number of points every athlete will get after a race
 void computePoints(Times results[], SkipList<Athlete> &list);
@@ -29,4 +29,4 @@ bool compareTimes(const Times &first, const Times &second);
 // has less points)
 bool comparePoints(const Athlete &first, const Athlete &second);
 
-#endif  // INCLUDE_HOMEWORK_H_
+#endif  // HEADERS_HOMEWORK_H_
