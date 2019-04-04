@@ -2,8 +2,8 @@
 #ifndef HEADERS_TIME_H_
 #define HEADERS_TIME_H_
 
-#include <iostream>
 #include <stdint.h>
+#include <iostream>
 
 class Times {
  public:

@@ -55,31 +55,12 @@ void race() {
     output.close();
 }
 
-// Check if the times are ordered correctly
-void checkOrder(Times *results, int32_t size) {
-    bool change = false;
-    do {
-        change = false;
-        for (int32_t i = 0; i < size - 1; ++i) {
-            if (results[i].time == results[i + 1].time) {
-                if (results[i].index > results[i + 1].index) {
-                    Times aux = results[i];
-                    results[i] = results[i + 1];
-                    results[i + 1] = aux;
-                    change = true;
-                }
-            }
-        }
-    } while (change);
-}
-
 void computePoints(Times results[], SkipList<Athlete> &list) {
     int32_t attending = 0;
     int32_t nrAthl = list.getCount();
 
     // Order the times in a ascending order
     Quicksort(results, compareTimes, nrAthl);
-    checkOrder(results, nrAthl);
 
     // Where times are equal, change postions depending on the last ranking
     bool changed = true;
@@ -89,9 +70,9 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
             if (results[i].time == results[i + 1].time) {
                 // Compares the last positions and switches (if needed)
                 int32_t pos1 = list.Search(Athlete(results[i].index))
-                               ->value.get_currPosition();
+                                   ->value.get_currPosition();
                 int32_t pos2 = list.Search(Athlete(results[i + 1].index))
-                               ->value.get_currPosition();
+                                   ->value.get_currPosition();
 
                 if (pos1 > pos2 && pos2 != 0) {
                     Times aux = results[i];
@@ -149,23 +130,6 @@ void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
     // Sort athletes by their ranking
     Quicksort(ranking, comparePoints, list.getCount());
 
-    // After the sort, consecutive athletes with equal points are sorted
-    // in descending order by their id. They need to be switched back
-    bool cont = false;
-    do {
-        cont = false;
-        for (int32_t i = 0; i < list.getCount() - 1; ++i) {
-            if (ranking[i].get_points() == ranking[i + 1].get_points()) {
-                if (ranking[i].get_id() > ranking[i + 1].get_id()) {
-                    Athlete aux = ranking[i];
-                    ranking[i] = ranking[i + 1];
-                    ranking[i + 1] = aux;
-                    cont = true;
-                }
-            }
-        }
-    } while (cont);
-
     for (int32_t i = 0; i < list.getCount(); ++i) {
         // Updates the ranking of the athletes
         list.Search(Athlete(ranking[i].get_id()))->value.updatePosition(i + 1);
@@ -199,6 +163,8 @@ void printRanking(SkipList<Athlete> &list, std::ofstream &output, bool first) {
 bool compareTimes(const Times &first, const Times &second) {
     if (first.time > second.time) {
         return true;
+    } else if (first.time == second.time && first.index > second.index) {
+        return true;
     } else {
         return false;
     }
@@ -208,6 +174,9 @@ bool compareTimes(const Times &first, const Times &second) {
 // athletes by their points)
 bool comparePoints(const Athlete &first, const Athlete &second) {
     if (first.get_points() < second.get_points()) {
+        return true;
+    } else if (first.get_points() == second.get_points() &&
+               first.get_id() > second.get_id()) {
         return true;
     } else {
         return false;

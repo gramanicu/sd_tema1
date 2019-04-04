@@ -2,8 +2,8 @@
 #ifndef HEADERS_QUICKSORT_H_
 #define HEADERS_QUICKSORT_H_
 
-#include <iostream>
 #include <stdint.h>
+#include <iostream>
 
 // Quicksort function - explained in Readme in more detail
 template <typename T>
@@ -12,8 +12,8 @@ void Quicksort(T *array, bool (*compare)(const T &first, const T &second),
   if (end == 0) {
     end = size - 1;
   }
-  int32_t pivot = end;
 
+  int32_t pivot = end;
   int32_t i = start;
 
   // Partitioning

@@ -2,8 +2,8 @@
 #ifndef HEADERS_ATHLETE_H_
 #define HEADERS_ATHLETE_H_
 
-#include <iostream>
 #include <stdint.h>
+#include <iostream>
 
 class Athlete {
  private:
@@ -85,7 +85,7 @@ class Athlete {
   void updatePosition(int32_t);  // Updates the athlete position
   void addPoints(int32_t);       // Adds points
   int32_t positionDifference();  // Computes the "progress"
-  void updatePrint();        // Updates the rank on last print
+  void updatePrint();            // Updates the rank on last print
 };
 
 #endif  // HEADERS_ATHLETE_H_

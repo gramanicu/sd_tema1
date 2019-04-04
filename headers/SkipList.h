@@ -3,8 +3,8 @@
 #define HEADERS_SKIPLIST_H_
 
 #include <math.h>
-#include <iostream>
 #include <stdint.h>
+#include <iostream>
 
 #include "Random.h"
 

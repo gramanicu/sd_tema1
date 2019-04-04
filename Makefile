@@ -25,7 +25,7 @@ AFLAGS = -FSr
 build: $(OBJ)
 	$(info Compiling code...)
 	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
-	$(info Compilation successfulsl)
+	$(info Compilation successfull)
 	-@rm -f *.o ||:
 	@$(MAKE) -s gitignore ||:
 
