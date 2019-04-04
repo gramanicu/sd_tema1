@@ -16,7 +16,7 @@ OBJ = $(SRC:.cpp=.o)
 CHECKER = https://ocw.cs.pub.ro/courses/_media/sd-ca/teme/checker-tema1-2019-v3.zip
 CARCHIVE = checker-tema1-2019-v3.zip
 
-# Variables realted to the archive (with the homework)
+# Variables related to the archive (with the homework)
 ANAME = 312CA_GramaNicolae_Tema1.zip
 ACONTENTS = README Makefile sources/ headers/
 AFLAGS = -FSr 
@@ -45,14 +45,13 @@ clean:
 	echo "Deleted the binary and object files"
 
 # Automatic coding style, using google standard.
-# The only modification is that I use 4 spaces instead of 2 for indentation
 beauty:
 	clang-format -i -style=file */*.cpp
 	clang-format -i -style=google */*.h
 
 # Downloads the checker archive and "installs" it
 # It will ask for the password, because it needs to give execution
-# right to the checker.
+# rights to the checker.
 update:
 	wget $(CHECKER)
 	unzip -o $(CARCHIVE)
@@ -87,7 +86,7 @@ purge:
 	rm -f time.err
 	echo "All files were removed"
 
-# Adds the gitignore rules
+# Adds and updates gitignore rules
 gitignore:
 	@echo "checkstyle.txt" > .gitignore ||:
 	@echo "races.in" >> .gitignore ||:
