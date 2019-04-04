@@ -8,6 +8,21 @@
 The problem statement can be found [here](https://ocw.cs.pub.ro/courses/sd-ca/teme/tema1).
 It is basically a athletics championship simulator. More info can be found in the problem statement.
 
+## Table of Contents
+
+1. [Project Structure](#project-structure)
+2. [SkipList](#skiplist)
+    - [The wrong way to implement a skiplist](#the-wrong-way-to-implement-a-skiplist)
+    - [The right way](#the-right-way)
+    - [Search](#search)
+    - [Insert](#insert)
+    - [References](#references)
+3. [CoinFlip](#coinflip)
+    - [Algorithm](#Algorithm)
+    - [Reference](#reference)
+4. [Quicksort](#quicksort)
+5. [Makefile](#makefile)
+
 ## Project Structure
 
 ``` bash
@@ -90,11 +105,16 @@ To insert a node, it is firstly search, to assure it doesn't exist already. Afte
 ## CoinFlip
 
 More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL). So, to solve those problems, I used utilities from `random` library. The coin flip could have been implemented just with random device, but it is not very efficient when it need to be called quickly. Random device generates random numbers in the same way as `urandom` does, so it **relatively slow**.
+
+### Algorithm
+
 The coin flip algorithm works this way:
 
 1. Generate a TRUE random number using `random_device`
 2. Generate all numbers with a PRNG, that has that true random number used as a seed (`mt19937`)
-3. Use a uniform number distribution that produces random numbers only in a closed interval (`uniform_int_distribution<int32_t>`)
+3. Use a uniform number distribution that produces random numbers only in a closed interval (`uniform_int_distribution<int32_t>`).
+
+For this specific case, the algorithm produces integers with value of 0 or 1. The `flip` function will return this numbers, converted into booleans (0 to `false`, 1 to `true`).
 
 ### Reference
 

@@ -17,7 +17,7 @@ int32_t CoinFlip::flip() {
         seed();
     }
     int32_t random = distribution(generator);
-    if (random) {
+    if (random==1) {
         return true;
     } else {
         return false;
