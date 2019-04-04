@@ -13,7 +13,7 @@
 void race() {
     // There will never be an athlete with the index lower than 0
     SkipList<Athlete> list(Athlete(-1));
-    int nrAthl, nrRaces, nrPrints;
+    int32_t nrAthl, nrRaces, nrPrints;
 
     // Open the input file and check if it was succesfull
     std::ifstream input("races.in");
@@ -25,7 +25,7 @@ void race() {
 
     input >> nrAthl >> nrRaces >> nrPrints;
 
-    for (int i = 0; i < nrAthl; ++i) {
+    for (int32_t i = 0; i < nrAthl; ++i) {
         list.Insert(Athlete(i));
     }
 
@@ -40,7 +40,7 @@ void race() {
             // Stores the results of every race
             Times results[MAX_ATHLETES];
             results[0] = Times(0, std::stoi(lastRead));
-            for (int i = 1; i < nrAthl; ++i) {
+            for (int32_t i = 1; i < nrAthl; ++i) {
                 input >> lastRead;
                 results[i] = Times(i, std::stoi(lastRead));
             }
@@ -56,11 +56,11 @@ void race() {
 }
 
 // Check if the times are ordered correctly
-void checkOrder(Times *results, int size) {
+void checkOrder(Times *results, int32_t size) {
     bool change = false;
     do {
         change = false;
-        for (int i = 0; i < size - 1; ++i) {
+        for (int32_t i = 0; i < size - 1; ++i) {
             if (results[i].time == results[i + 1].time) {
                 if (results[i].index > results[i + 1].index) {
                     Times aux = results[i];
@@ -74,8 +74,8 @@ void checkOrder(Times *results, int size) {
 }
 
 void computePoints(Times results[], SkipList<Athlete> &list) {
-    int attending = 0;
-    int nrAthl = list.getCount();
+    int32_t attending = 0;
+    int32_t nrAthl = list.getCount();
 
     // Order the times in a ascending order
     Quicksort(results, compareTimes, nrAthl);
@@ -85,12 +85,12 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
     bool changed = true;
     while (changed) {
         changed = false;
-        for (int i = 0; i < nrAthl - 1; ++i) {
+        for (int32_t i = 0; i < nrAthl - 1; ++i) {
             if (results[i].time == results[i + 1].time) {
                 // Compares the last positions and switches (if needed)
-                int pos1 = list.Search(Athlete(results[i].index))
+                int32_t pos1 = list.Search(Athlete(results[i].index))
                                ->value.get_currPosition();
-                int pos2 = list.Search(Athlete(results[i + 1].index))
+                int32_t pos2 = list.Search(Athlete(results[i + 1].index))
                                ->value.get_currPosition();
 
                 if (pos1 > pos2 && pos2 != 0) {
@@ -104,16 +104,16 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
     }
 
     // Find how many actually participated
-    for (int i = 0; i < nrAthl; ++i) {
+    for (int32_t i = 0; i < nrAthl; ++i) {
         if (results[i].time != 0) {
             attending++;
         }
     }
 
     // Compute the number of points to be given to each athlete
-    int points[MAX_ATHLETES];
-    for (int i = nrAthl - attending; i < nrAthl; ++i) {
-        int pGiven;
+    int32_t points[MAX_ATHLETES];
+    for (int32_t i = nrAthl - attending; i < nrAthl; ++i) {
+        int32_t pGiven;
         if (attending % 2 == 0) {
             pGiven = attending / 2 - i + nrAthl - attending;
             if (pGiven <= 0) {
@@ -126,12 +126,12 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
     }
 
     // Gives 0 points to the ones who didn't participate
-    for (int i = 0; i < nrAthl - attending; ++i) {
+    for (int32_t i = 0; i < nrAthl - attending; ++i) {
         points[results[i].index] = 0;
     }
 
     // Updates the points
-    for (int i = 0; i < nrAthl; ++i) {
+    for (int32_t i = 0; i < nrAthl; ++i) {
         list.Search(Athlete(i))->value.addPoints(points[i]);
     }
 
@@ -142,7 +142,7 @@ void computePoints(Times results[], SkipList<Athlete> &list) {
 // Updates the positions of the athletes
 void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
     // Copy athletes to an array, so it can be sorted with quicksort
-    for (int i = 0; i < list.getCount(); ++i) {
+    for (int32_t i = 0; i < list.getCount(); ++i) {
         ranking[i] = list.Search(Athlete(i))->value;
     }
 
@@ -154,7 +154,7 @@ void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
     bool cont = false;
     do {
         cont = false;
-        for (int i = 0; i < list.getCount() - 1; ++i) {
+        for (int32_t i = 0; i < list.getCount() - 1; ++i) {
             if (ranking[i].get_points() == ranking[i + 1].get_points()) {
                 if (ranking[i].get_id() > ranking[i + 1].get_id()) {
                     Athlete aux = ranking[i];
@@ -166,7 +166,7 @@ void updateRanking(SkipList<Athlete> &list, Athlete *ranking) {
         }
     } while (cont);
 
-    for (int i = 0; i < list.getCount(); ++i) {
+    for (int32_t i = 0; i < list.getCount(); ++i) {
         // Updates the ranking of the athletes
         list.Search(Athlete(ranking[i].get_id()))->value.updatePosition(i + 1);
     }
@@ -178,7 +178,7 @@ void printRanking(SkipList<Athlete> &list, std::ofstream &output, bool first) {
     updateRanking(list, ranking);
 
     // Print the data
-    for (int i = 0; i < list.getCount(); ++i) {
+    for (int32_t i = 0; i < list.getCount(); ++i) {
         if (first) {
             output << ranking[i].get_id() + 1 << " " << ranking[i].get_points()
                    << " 0" << std::endl;
@@ -189,7 +189,7 @@ void printRanking(SkipList<Athlete> &list, std::ofstream &output, bool first) {
     }
     output << std::endl;
 
-    for (int i = 0; i < list.getCount(); ++i) {
+    for (int32_t i = 0; i < list.getCount(); ++i) {
         list.Search(Athlete(i))->value.updatePrint();
     }
 }

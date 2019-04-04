@@ -1,7 +1,7 @@
 // Copyright Grama Nicolae 2019
 #include "../headers/homework.h"
 
-int main() {
+int32_t main() {
     race();
     return 0;
 }

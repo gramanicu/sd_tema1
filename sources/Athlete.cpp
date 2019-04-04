@@ -10,8 +10,8 @@ Athlete::Athlete(const Athlete &other) {
 
 void Athlete::updatePrint() { lastPosition = currPosition; }
 
-void Athlete::updatePosition(int _pos) { currPosition = _pos; }
+void Athlete::updatePosition(int32_t _pos) { currPosition = _pos; }
 
-void Athlete::addPoints(int _points) { points += _points; }
+void Athlete::addPoints(int32_t _points) { points += _points; }
 
-int Athlete::positionDifference() { return lastPosition - currPosition; }
+int32_t Athlete::positionDifference() { return lastPosition - currPosition; }

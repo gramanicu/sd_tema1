@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <stdint.h>
 #include "Athlete.h"
 #include "Quicksort.h"
 #include "SkipList.h"

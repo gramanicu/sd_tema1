@@ -2,7 +2,6 @@ checkstyle.txt
 races.in
 check.sh
 input*
-bin*
 ref*
 cpplint.py
 README

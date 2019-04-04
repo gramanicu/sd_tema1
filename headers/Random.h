@@ -3,16 +3,17 @@
 #define HEADERS_RANDOM_H_
 
 #include <random>
+#include <stdint.h>
 
 class CoinFlip {
  private:
   // The next 3 variables are used for random generation
   static bool initialized;
   static std::mt19937 generator;
-  static std::uniform_int_distribution<int> distribution;
+  static std::uniform_int_distribution<int32_t> distribution;
 
   static void seed() {
-    distribution = std::uniform_int_distribution<int>(0, 1);
+    distribution = std::uniform_int_distribution<int32_t>(0, 1);
     std::random_device rDevice;
     generator = std::mt19937(rDevice());
     initialized = true;
@@ -21,11 +22,11 @@ class CoinFlip {
   CoinFlip() = delete;
 
  public:
-  static int flip() {
+  static int32_t flip() {
     if (!initialized) {
       seed();
     }
-    int random = distribution(generator);
+    int32_t random = distribution(generator);
     if (random) {
       return true;
     } else {

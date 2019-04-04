@@ -94,7 +94,7 @@ The coin flip algorithm works this way:
 
 1. Generate a TRUE random number using `random_device`
 2. Generate all numbers with a PRNG, that has that true random number used as a seed (`mt19937`)
-3. Use a uniform number distribution that produces random numbers only in a closed interval (`uniform_int_distribution<int>`)
+3. Use a uniform number distribution that produces random numbers only in a closed interval (`uniform_int_distribution<int32_t>`)
 
 ### Reference
 

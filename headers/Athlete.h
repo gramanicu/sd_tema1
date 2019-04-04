@@ -3,20 +3,21 @@
 #define HEADERS_ATHLETE_H_
 
 #include <iostream>
+#include <stdint.h>
 
 class Athlete {
  private:
-  int id;
-  int lastPosition;
-  int currPosition;
-  int points;
+  int32_t id;
+  int32_t lastPosition;
+  int32_t currPosition;
+  int32_t points;
 
  public:
   // Constructors
   Athlete() : id(0), lastPosition(0), currPosition(0), points(0) {}
-  explicit Athlete(int _id)
+  explicit Athlete(int32_t _id)
       : id(_id), lastPosition(0), currPosition(0), points(0) {}
-  Athlete(int _id, int _pos)
+  Athlete(int32_t _id, int32_t _pos)
       : id(_id), lastPosition(_pos), currPosition(_pos), points(0) {}
 
   // Destructor
@@ -26,10 +27,10 @@ class Athlete {
   Athlete(const Athlete&);
 
   // Getters
-  int get_id() const { return id; }
-  int get_lastPosition() const { return lastPosition; }
-  int get_currPosition() const { return currPosition; }
-  int get_points() const { return points; }
+  int32_t get_id() const { return id; }
+  int32_t get_lastPosition() const { return lastPosition; }
+  int32_t get_currPosition() const { return currPosition; }
+  int32_t get_points() const { return points; }
 
   // Operator overloads
   friend std::ostream& operator<<(std::ostream& os, const Athlete& ath) {
@@ -81,9 +82,9 @@ class Athlete {
   }
 
   // Other methods
-  void updatePosition(int);  // Updates the athlete position
-  void addPoints(int);       // Adds points
-  int positionDifference();  // Computes the "progress"
+  void updatePosition(int32_t);  // Updates the athlete position
+  void addPoints(int32_t);       // Adds points
+  int32_t positionDifference();  // Computes the "progress"
   void updatePrint();        // Updates the rank on last print
 };
 

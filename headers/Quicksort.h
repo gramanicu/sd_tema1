@@ -3,17 +3,18 @@
 #define HEADERS_QUICKSORT_H_
 
 #include <iostream>
+#include <stdint.h>
 
 // Quicksort function - explained in Readme in more detail
 template <typename T>
 void Quicksort(T *array, bool (*compare)(const T &first, const T &second),
-               int size, int start = 0, int end = 0) {
+               int32_t size, int32_t start = 0, int32_t end = 0) {
   if (end == 0) {
     end = size - 1;
   }
-  int pivot = end;
+  int32_t pivot = end;
 
-  int i = start;
+  int32_t i = start;
 
   // Partitioning
   while (i <= pivot) {

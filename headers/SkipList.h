@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <iostream>
+#include <stdint.h>
 
 #include "Random.h"
 
@@ -13,7 +14,7 @@ class SkipList {
   class SkipNode {
    public:
     // Number of levels
-    int levels;
+    int32_t levels;
     // The value/element stored in the node
     T value;
     // "Express" links to other nodes
@@ -22,11 +23,11 @@ class SkipList {
     SkipNode* next;
 
     // Constructors
-    explicit SkipNode(const int _levels) : value(0), levels(_levels) {
+    explicit SkipNode(const int32_t _levels) : value(0), levels(_levels) {
       shortcut = new SkipNode*[levels];
     }
 
-    SkipNode(const T& _value, const int _levels)
+    SkipNode(const T& _value, const int32_t _levels)
         : value(_value), levels(_levels) {
       shortcut = new SkipNode*[levels];
     }
@@ -34,7 +35,7 @@ class SkipList {
     // Copy-Constructor
     SkipNode(const SkipNode& other) : value(other.value), levels(other.levels) {
       SkipNode* shortcut[levels];
-      for (int i = 1; i <= levels; ++i) {
+      for (int32_t i = 1; i <= levels; ++i) {
         shortcut[i] = other.shortcut[i];
       }
     }
@@ -44,9 +45,9 @@ class SkipList {
   };
 
   // Maximum level in the skiplist
-  int maxLevel;
+  int32_t maxLevel;
   // Total number of elements in the skiplist
-  int numElements;
+  int32_t numElements;
 
  public:
   // The head of the skiplist
@@ -57,11 +58,11 @@ class SkipList {
       a value that will not appear in the skiplist . Also, the maximum size
       of the skiplist can be set.
   */
-  explicit SkipList(const T& head = 0, const int& maxSize = 1000)
+  explicit SkipList(const T& head = 0, const int32_t& maxSize = 1000)
       : maxLevel(ceil(log2(maxSize))), numElements(0) {
     first = new SkipNode(head, maxLevel);
     first->next = nullptr;
-    for (int i = 0; i < maxLevel; i++) {
+    for (int32_t i = 0; i < maxLevel; i++) {
       first->shortcut[i] = nullptr;
     }
   }
@@ -70,7 +71,7 @@ class SkipList {
   ~SkipList() {
     SkipNode* curr = first;
     SkipNode* next;
-    int count = 0;
+    int32_t count = 0;
 
     while (count < numElements + 1) {
       next = curr->next;
@@ -80,13 +81,13 @@ class SkipList {
     }
   }
 
-  int getCount() const { return numElements; }
+  int32_t getCount() const { return numElements; }
 
   // Search for a node. Return a nullptr if it doesn't exist
   // The algorithm is explained in Readme
   SkipNode* Search(const T& value) {
     SkipNode* node = first;
-    int currLevel = maxLevel - 1;
+    int32_t currLevel = maxLevel - 1;
 
     while (node->next) {
       if (node->value == value) {
@@ -125,14 +126,14 @@ class SkipList {
   // Insert a value (element) in the skiplist
   void Insert(const T& value) {
     if (Search(value) == nullptr) {
-      int levels = 0;
+      int32_t levels = 0;
       while (CoinFlip::flip() && levels < maxLevel) {
         levels++;
       }
 
       SkipNode* node = new SkipNode(value, levels);
       node->next = nullptr;
-      for (int i = 0; i < levels; i++) {
+      for (int32_t i = 0; i < levels; i++) {
         node->shortcut[i] = nullptr;
       }
 
@@ -140,7 +141,7 @@ class SkipList {
       // It searches on the top level, links there, then continues
       // the search on a lower level
       SkipNode* curr = first;
-      for (int i = levels - 1; i >= 0; i--) {
+      for (int32_t i = levels - 1; i >= 0; i--) {
         while (curr->shortcut[i] != nullptr) {
           if (curr->shortcut[i]->value < value) {
             curr = curr->shortcut[i];
@@ -167,7 +168,7 @@ class SkipList {
   // Print all data in the skiplist
   friend std::ostream& operator<<(std::ostream& output, const SkipList& list) {
     SkipNode* curr = list.first;
-    int count = 0;
+    int32_t count = 0;
     if (list.getCount() != 0) {
       curr = curr->next;
       while (count < list.getCount()) {
@@ -182,7 +183,7 @@ class SkipList {
   }
 
   // Return the max level
-  int get_maxLevel() { return maxLevel; }
+  int32_t get_maxLevel() { return maxLevel; }
 };
 
 #endif  // HEADERS_SKIPLIST_H_

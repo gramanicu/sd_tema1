@@ -3,15 +3,16 @@
 #define HEADERS_TIME_H_
 
 #include <iostream>
+#include <stdint.h>
 
 class Times {
  public:
-  int index;
-  int time;
+  int32_t index;
+  int32_t time;
 
   // Constructors
   Times() {}
-  Times(const int index, const int time) : index(index), time(time) {}
+  Times(const int32_t index, const int32_t time) : index(index), time(time) {}
 
   // Destructor
   ~Times() {}
