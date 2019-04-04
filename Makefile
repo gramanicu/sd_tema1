@@ -97,7 +97,7 @@ gitignore:
 	@echo "README" >> .gitignore ||:
 	@echo "$(ANAME)" >> .gitignore ||:
 	@echo "$(EXE)" >> .gitignore ||:
-	@echo sources/*.o >> .gitignore ||:
+	@echo "sources/*.o" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	@echo "time.err*" >> .gitignore ||:
 	@echo "races.out*" >> .gitignore ||:
