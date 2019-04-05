@@ -12,7 +12,7 @@ class CoinFlip {
   static std::mt19937 generator;
   static std::uniform_int_distribution<int32_t> distribution;
 
-  static void seed() ;
+  static void seed();
   CoinFlip() = delete;
 
  public:
