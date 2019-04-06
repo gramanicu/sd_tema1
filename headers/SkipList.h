@@ -23,12 +23,12 @@ class SkipList {
     SkipNode* next;
 
     // Constructors
-    explicit SkipNode(const int32_t _levels) : value(0), levels(_levels) {
+    explicit SkipNode(const int32_t _levels) : levels(_levels), value(0){
       shortcut = new SkipNode*[levels];
     }
 
     SkipNode(const T& _value, const int32_t _levels)
-        : value(_value), levels(_levels) {
+        : levels(_levels), value(_value) {
       shortcut = new SkipNode*[levels];
     }
 

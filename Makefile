@@ -5,9 +5,9 @@
 
 # Compilation variables
 CC = g++
-CFLAGS = -Wall -Wextra -pedantic -O3 -g
+CFLAGS = -Wall -Wextra -pedantic -O3 -g -std=c++11
 EXE = tema1
-SRC = $(wildcard *.cpp) $(wildcard */*.cpp)
+SRC = $(wildcard */*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 # Variables related to the checker
@@ -24,10 +24,13 @@ AFLAGS = -FSr
 # Compiles the program
 build: $(OBJ)
 	$(info Compiling code...)
-	@$(CC) -o $(EXE) $^ $(LFLAGS) $(CFLAGS) ||:
+	@$(CC) -o $(EXE) $^ $(CFLAGS) ||:
 	$(info Compilation successfull)
 	-@rm -f *.o ||:
 	@$(MAKE) -s gitignore ||:
+
+%.o: %.cpp
+	$(CC) -o $@ -c $< $(CFLAGS) 
 
 # Executes the binary
 run: build
